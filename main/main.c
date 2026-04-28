@@ -1,13 +1,20 @@
 /**
- * ESP32-S3 Voice Assistant Demo
- * * This project implements a full-stack voice assistant on an ESP32-S3.
- * Features:
- * - Offline Wake-word Detection (WakeNet)
- * - Voice Recording with simple VAD (Voice Activity Detection)
- * - Gemini 2.5 Flash API integration for Generative AI processing
- * - Google Text-to-Speech (TTS) for natural voice responses
- * - I2S Audio input/output (INMP441 Microphone & MAX98357A Amplifier)
- * - Visual feedback via S3 built-in WS2812B RGB LED
+ * @file main.c
+ * @brief ESP32-S3 Gemini Voice Assistant Demo
+ * @author Ninth Workshop (https://github.com/ninthworkshop)
+ * @version 1.0.0
+ * @date 2026-04
+ * * @copyright Copyright (c) 2026 Ninth Workshop. Licensed under the MIT License.
+ * * --- Project Description ---
+ * This is a high-performance, full-stack voice assistant implementation 
+ * designed for the ESP32-S3 platform. It seamlessly integrates offline 
+ * edge computing with modern cloud AI services.
+ * * Core Features:
+ * - Offline Wake-word: Espressif WakeNet (default: "Ni Hao Xiao Zhi")
+ * - Smart Logic: Google Gemini 2.5 Flash API for advanced reasoning
+ * - Natural Voice: Google Cloud Text-to-Speech (TTS) synthesis
+ * - Audio Path: I2S Digital Interface (INMP441 Mic & MAX98357A Amp)
+ * - Visual UI: Integrated WS2812B RGB LED status feedback
  */
 
 #include <stdio.h>
