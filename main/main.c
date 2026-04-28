@@ -63,7 +63,7 @@
 #define DEBUG_MODE          false
 
 /* --- Global Handles & State Variables --- */
-static const char *TAG = "NinthWorkshop";
+static const char *TAG = "NWConsole";
 static led_strip_handle_t led_strip;
 static EventGroupHandle_t s_wifi_event_group;
 static i2s_chan_handle_t rx_chan = NULL;
