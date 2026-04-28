@@ -1,42 +1,37 @@
-# Wake Word Detection
+# ESP32-S3 Gemini Voice Assistant Demo
 
-| Supported Targets | ESP32    | ESP32-S2 | ESP32-S3 | ESP32-P4 | ESP32-C3 | ESP32-C5 | ESP32-C6 | 
-| ----------------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
+This project is a high-performance Voice Assistant demonstration built on the **ESP32-S3** platform. It integrates **Espressif's WakeNet** for offline wake-word detection, **Gemini 2.5 Flash** for advanced AI reasoning, and **Google TTS** for natural voice feedback.
 
-(See the [README.md](../README.md) file in the upper level 'examples' directory for more information about examples.)
+## 🚀 Features
+- **Offline Wake-word**: Powered by `esp-skainet` (Default: "Ni Hao Xiao Zhi").
+- **Smart Conversational AI**: Leverages Google Gemini API for context-aware responses.
+- **Natural Speech**: High-quality Chinese/English TTS via Google Text-to-Speech.
+- **Optimized for S3**: Utilizes PSRAM for large buffer management and JSON parsing.
 
-This example is used to test performance of wakenet.(the word word engine of Espressif).
-This example can load multiple models, but can only run two models at the same time
+## 🛠️ Hardware Requirements
+- **Core**: ESP32-S3 Development Board (Must have **8MB PSRAM**).
+- **Mic**: INMP441 (I2S Digital Microphone).
+- **Speaker**: MAX98357A I2S DAC + 4-8Ω Speaker.
+- **LED**: WS2812B RGB LED (Status Indicator).
 
+## 📋 Prerequisites & Setup
+This project depends on the **ESP-Skainet** component. Please follow these steps to set up the environment:
 
-### Configure
+1.  **Install ESP-IDF**: Recommended version `v5.0` or later.
+2.  **Clone ESP-Skainet**:
+    ```bash
+    git clone --recursive [https://github.com/espressif/esp-skainet.git](https://github.com/espressif/esp-skainet.git)
+    ```
+3.  **Project Location**: 
+    Place this repository folder under `esp-skainet/examples/`.
+4.  **API Keys**: 
+    Update `GOOGLE_TTS_API_KEY` and `GEMINI_API_KEY` in the source code with your valid keys.
+5.  **WiFi Credentials**: 
+    Update `EXAMPLE_ESP_WIFI_SSID` and `EXAMPLE_ESP_WIFI_PASS`.
 
-Select board and wake words
-```
+## ⚡ Build & Flash
+```bash
 idf.py set-target esp32s3
-idf.py menuconfig
-
-# Select audio board
-Audio Media HAL -> Audio hardware board -> ESP32-S3-Korvo-1
-
-# Load one wakenet model
-ESP Speech Recognition -> Select wake words -> Hi,Lexin (wn9_hilexin)
-
-# Load multiple wakenet models
-ESP Speech Recognition -> Select wake words -> Hi,Lexin (wn9_hilexin) -> Load Multiple Wake Words
-ESP Speech Recognition -> Load Multiple Wake Words -> Hi,Lexin (wn9_hilexin)
-                                                   -> Hi,ESP (wn9_hiesp)
-```
-
-### build&flash
-
-Build the project and flash it to the board, then run the monitor tool to view the output via serial port:
-
-```
-idf.py flash monitor 
-```
-
-(To exit the serial monitor, type ``Ctrl-]``.)
-
-
-# esp32s3-voice-assistant-demo
+idf.py menuconfig # Configure your flash size (e.g., 8MB/16MB) and enable PSRAM
+idf.py build
+idf.py -p [PORT] flash monitor
