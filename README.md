@@ -9,15 +9,25 @@ This project is a high-performance Voice Assistant demonstration built on the **
 - **Optimized for S3**: Utilizes PSRAM for large buffer management and JSON parsing.
 
 ## 🛠️ Hardware Requirements
+![Wiring Diagram](assets/wiring_diagram.jpg)
 - **Core**: ESP32-S3 Development Board (Must have **8MB PSRAM**).
 - **Mic**: INMP441 (I2S Digital Microphone).
 - **Speaker**: MAX98357A I2S DAC + 4-8Ω Speaker.
 - **LED**: WS2812B RGB LED (Status Indicator).
 
+### 📍 Pin Mapping Reference
+
+| Component | Pin Name | ESP32-S3 GPIO | Note |
+| :--- | :--- | :--- | :--- |
+| **INMP441 (Mic)** | SCK / WS / SD | GPIO 4 / 5 / 6 | I2S0 Input |
+| **MAX98357A (Amp)** | BCLK / LRC / DIN | GPIO 16 / 17 / 18 | I2S1 Output |
+| **WS2812B (LED)** | DIN | GPIO 38 | Status Indicator |
+| **Power** | VCC / GND | 5V or 3.3V / GND | Common Ground is MUST |
+
 ## 📋 Prerequisites & Setup
 This project depends on the **ESP-Skainet** component. Please follow these steps to set up the environment:
 
-1.  **Install ESP-IDF**: Recommended version `v5.0` or later.
+1.  **Install ESP-IDF**: Recommended version `v6.0` or later.
 2.  **Clone ESP-Skainet**:
     ```bash
     git clone --recursive [https://github.com/espressif/esp-skainet.git](https://github.com/espressif/esp-skainet.git)
