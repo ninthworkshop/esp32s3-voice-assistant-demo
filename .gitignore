@@ -1,0 +1,20 @@
+# --- ESP-IDF / Build Outputs ---
+build/
+sdkconfig
+sdkconfig.old
+dependencies.lock
+managed_components/
+
+# --- Private / Sensitive Data ---
+# 這是最重要的！防止你的 API Keys 上傳到 GitHub
+main/secrets.h
+
+# --- IDE / System Files ---
+.vscode/
+.idea/
+.DS_Store
+*.log
+
+# --- Temp files ---
+*~
+*.swp
